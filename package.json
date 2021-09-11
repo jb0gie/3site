@@ -1,6 +1,6 @@
 {
-  "name": "thr33site",
-  "version": "0.0.0",
+  "name": "3site",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

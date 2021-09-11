@@ -13,46 +13,64 @@ const renderer = new THREE.WebGLRenderer({
 //init render window dimens
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+
 //place cam
-camera.position.setZ(30);
+camera.position.setZ(25);
+
 //render
 renderer.render (scene, camera);
+
 //spwn geometry ++ material
 const geometry = new THREE.TorusGeometry (10,3,16,100)
 const material = new THREE.MeshStandardMaterial({color:0xFF6347});
+
 //spwn mesh && apply geometry ++ material
 const torus = new THREE.Mesh(geometry, material);
+
 //add mesh to scene
 scene.add(torus)
+
 //spwn pointlight
 const pointLight = new THREE.PointLight(0xffffff);
+
 //place pointlight
 pointLight.position.set(5,15,5);
+
 //spwn ambientlight
 const ambientLight = new THREE.AmbientLight(0xffffff);
+
 //add lights to scene
 scene.add(pointLight, ambientLight)
+
 //spwn pointlight helper
 const lightHelper = new THREE.PointLightHelper(pointLight)
+
 //spwn grid helper
 const gridHelper = new THREE.GridHelper(200, 50);
+
 //add helpers to scene
 scene.add(lightHelper, gridHelper)
+
 //spwn camera controls
 const controls = new OrbitControls(camera, renderer.domElement);
+
 //spwn stars
 function addStar(){
   //spwn geometry ++ material
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+  
   //spwn mesh && apply geometry ++ material0
   const star = new THREE.Mesh(geometry, material);
+  
   //gen rand pos for each star
   const [x, y, z] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(100));
+    
   //set star pos
   star.position.set(x, y, z);
+  
   //add star to scene
   scene.add(star);
 }
