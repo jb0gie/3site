@@ -72,9 +72,8 @@ canvas {
     color: black;
     background-color: white;
     font-size: 4rem;
-    font-family:  'Permanent Marker', cursive;
     display: inline;
-    line-height: 1;
+    line-height: 1.2;
   }
 
   .left {
