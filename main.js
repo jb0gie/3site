@@ -1,10 +1,15 @@
-import './style.css'
-import * as THREE from 'three';
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import "./style.css";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 //spwn scene
 const scene = new THREE.Scene();
 //spwn camera
-const camera = new THREE.PerspectiveCamera (75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
 //spwn renderer
 const renderer = new THREE.WebGLRenderer({
   //link js to html via css id
@@ -18,108 +23,108 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(25);
 
 //render
-renderer.render (scene, camera);
+renderer.render(scene, camera);
 
 //spwn geometry ++ material
-const geometry = new THREE.TorusGeometry (10,3,16,100)
-const material = new THREE.MeshStandardMaterial({color:0xFF6347});
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
 
 //spwn mesh && apply geometry ++ material
 const torus = new THREE.Mesh(geometry, material);
 
 //add mesh to scene
-scene.add(torus)
+scene.add(torus);
 
 //spwn pointlight
 const pointLight = new THREE.PointLight(0xffffff);
 
 //place pointlight
-pointLight.position.set(5,15,5);
+pointLight.position.set(5, 15, 5);
 
 //spwn ambientlight
 const ambientLight = new THREE.AmbientLight(0xffffff);
 
 //add lights to scene
-scene.add(pointLight, ambientLight)
+scene.add(pointLight, ambientLight);
 
 //spwn pointlight helper
-const lightHelper = new THREE.PointLightHelper(pointLight)
+const lightHelper = new THREE.PointLightHelper(pointLight);
 
 //spwn grid helper
 const gridHelper = new THREE.GridHelper(200, 50);
 
 //add helpers to scene
-scene.add(lightHelper, gridHelper)
+scene.add(lightHelper, gridHelper);
 
 //spwn camera controls
 const controls = new OrbitControls(camera, renderer.domElement);
 
 //spwn stars
-function addStar(){
+function addStar() {
   //spwn geometry ++ material
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-  
+
   //spwn mesh && apply geometry ++ material0
   const star = new THREE.Mesh(geometry, material);
-  
+
   //gen rand pos for each star
   const [x, y, z] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(100));
-    
+
   //set star pos
   star.position.set(x, y, z);
-  
+
   //add star to scene
   scene.add(star);
 }
 //spwn stars
-Array(200).fill().forEach(addStar)
+Array(200).fill().forEach(addStar);
 //spwn space texture
-const spaceTexture = new THREE.TextureLoader().load('space.jpeg');
-//set space texture as scene background 
+const spaceTexture = new THREE.TextureLoader().load("space.jpeg");
+//set space texture as scene background
 scene.background = spaceTexture;
 //spwn avatar texture
-const b0gieTexture = new THREE.TextureLoader().load('avi.jpeg');
+const b0gieTexture = new THREE.TextureLoader().load("avi.jpeg");
 //spwn avatar mesh
 const b0gie = new THREE.Mesh(
   //til rn i spwnd geometry ++ material before spwning mesh.
   //it can b dun dis wei 2...inside mesh parenthez
-  new THREE.BoxGeometry(3,3,3),
-  new THREE.MeshBasicMaterial({map: b0gieTexture})
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial({ map: b0gieTexture })
 );
 //add b0gie to scene
 scene.add(b0gie);
 //spwn planet textures
-const planetTexture = new THREE.TextureLoader().load('mercurymap.jpeg');
-const planetNormTxture = new THREE.TextureLoader().load('mercurybump.jpeg');
+const planetTexture = new THREE.TextureLoader().load("mercurymap.jpeg");
+const planetNormTxture = new THREE.TextureLoader().load("mercurybump.jpeg");
 //spwn planet
 const planet = new THREE.Mesh(
-  new THREE.SphereGeometry(3,32,32),
+  new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
     map: planetTexture,
-    normalMap: planetNormTxture
+    normalMap: planetNormTxture,
   })
 );
 //add planet to scene
 scene.add(planet);
 planet.position.z = 30;
 planet.position.setX(-10);
-function moveCamera(){
-  const t = document.body.getBoundingClientRect().top;
-  planet.rotation.x += 0.05;
-  planet.rotation.y += 0.075;
-  planet.rotation.z += 0.05;
+// function moveCamera() {
+//   const t = document.body.getBoundingClientRect().top;
+//   planet.rotation.x += 0.05;
+//   planet.rotation.y += 0.075;
+//   planet.rotation.z += 0.05;
 
-  b0gie.rotation.y += 0.01;
-  b0gie.rotation.z += 0.01;
+//   b0gie.rotation.y += 0.01;
+//   b0gie.rotation.z += 0.01;
 
-  camera.position.z = t * -0.01;
-  camera.position.x = t * -0.0002;
-  camera.position.y = t * -0.0002;
-}
-document.body.onscroll = moveCamera
+//   camera.position.z = t * -0.01;
+//   camera.position.x = t * -0.0002;
+//   camera.position.y = t * -0.0002;
+// }
+// document.body.onscroll = moveCamera;
 //update func
 function animate() {
   requestAnimationFrame(animate);
@@ -133,4 +138,4 @@ function animate() {
   renderer.render(scene, camera);
 }
 //call animate func
-animate()
+animate();
