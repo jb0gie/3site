@@ -1,4 +1,4 @@
-import "./style.css";
+import "../css/style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 //spwn scene
@@ -48,13 +48,13 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
 //spwn pointlight helper
-const lightHelper = new THREE.PointLightHelper(pointLight);
+// const lightHelper = new THREE.PointLightHelper(pointLight);
 
 //spwn grid helper
-const gridHelper = new THREE.GridHelper(200, 50);
+// const gridHelper = new THREE.GridHelper(200, 50);
 
 //add helpers to scene
-scene.add(lightHelper, gridHelper);
+// scene.add(lightHelper, gridHelper);
 
 //spwn camera controls
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -62,14 +62,14 @@ const controls = new OrbitControls(camera, renderer.domElement);
 //spwn stars
 function addStar() {
   //spwn geometry ++ material
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const geometry = new THREE.SphereGeometry(0.25, 14, 14);
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
 
   //spwn mesh && apply geometry ++ material0
   const star = new THREE.Mesh(geometry, material);
 
   //gen rand pos for each star
-  const [x, y, z] = Array(3)
+  const [x, y, z] = Array(5)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(100));
 
@@ -80,25 +80,29 @@ function addStar() {
   scene.add(star);
 }
 //spwn stars
-Array(200).fill().forEach(addStar);
+Array(800).fill().forEach(addStar);
 //spwn space texture
-const spaceTexture = new THREE.TextureLoader().load("space.jpeg");
+const spaceTexture = new THREE.TextureLoader().load("../images/space.jpeg");
 //set space texture as scene background
 scene.background = spaceTexture;
-//spwn avatar texture
-const b0gieTexture = new THREE.TextureLoader().load("avi.jpeg");
-//spwn avatar mesh
+// spwn avatar texture
+const b0gieTexture = new THREE.TextureLoader().load("../images/thumbnail.png");
+// spwn avatar mesh
 const b0gie = new THREE.Mesh(
-  //til rn i spwnd geometry ++ material before spwning mesh.
-  //it can b dun dis wei 2...inside mesh parenthez
   new THREE.BoxGeometry(3, 3, 3),
   new THREE.MeshBasicMaterial({ map: b0gieTexture })
 );
+//til rn i spwnd geometry ++ material before spwning mesh.
+//it can b dun dis wei 2...inside mesh parenthez
 //add b0gie to scene
 scene.add(b0gie);
 //spwn planet textures
-const planetTexture = new THREE.TextureLoader().load("mercurymap.jpeg");
-const planetNormTxture = new THREE.TextureLoader().load("mercurybump.jpeg");
+const planetTexture = new THREE.TextureLoader().load(
+  "../images/mercurymap.jpeg"
+);
+const planetNormTxture = new THREE.TextureLoader().load(
+  "../images/mercurybump.jpeg"
+);
 //spwn planet
 const planet = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -111,20 +115,20 @@ const planet = new THREE.Mesh(
 scene.add(planet);
 planet.position.z = 30;
 planet.position.setX(-10);
-// function moveCamera() {
-//   const t = document.body.getBoundingClientRect().top;
-//   planet.rotation.x += 0.05;
-//   planet.rotation.y += 0.075;
-//   planet.rotation.z += 0.05;
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+  planet.rotation.x += 0.05;
+  planet.rotation.y += 0.075;
+  planet.rotation.z += 0.05;
 
-//   b0gie.rotation.y += 0.01;
-//   b0gie.rotation.z += 0.01;
+  b0gie.rotation.y += 0.01;
+  b0gie.rotation.z += 0.01;
 
-//   camera.position.z = t * -0.01;
-//   camera.position.x = t * -0.0002;
-//   camera.position.y = t * -0.0002;
-// }
-// document.body.onscroll = moveCamera;
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.position.y = t * -0.0002;
+}
+document.body.onscroll = moveCamera;
 //update func
 function animate() {
   requestAnimationFrame(animate);
