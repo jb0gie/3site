@@ -1,6 +1,8 @@
 {
   "name": "3site",
   "version": "0.0.1",
+  "description": "always wanted to make a cool looking website ",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

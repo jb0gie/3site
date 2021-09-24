@@ -4,41 +4,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <link rel="icon" type="image/png" href="../images/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>𝐢 𝐫 𝐛𝟎𝐠𝐢𝐞</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> <!-- tail🌬 😻 -->
 </head>
 
 <body>
+    <!-- THREEjs -->
     <script type="module">
 
         import * as THREE from 'https://cdn.skypack.dev/three';
         import {OrbitControls} from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 
-        //spwn scene
+        //spwn scene, camera, renderer
         const scene = new THREE.Scene();
-        //spwn camera
         const camera = new THREE.PerspectiveCamera(
-            75,
-            window.innerWidth / window.innerHeight,
-            0.1,
-            1000
+            75, window.innerWidth / window.innerHeight, 0.1, 1000
         );
-        //spwn renderer
         const renderer = new THREE.WebGLRenderer({
-            //link js to html via css id
-            canvas: document.querySelector("#bg"),
+            canvas: document.querySelector("#bg"), //link js to html via css id
         });
         //init render window dimens
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
-
-        //place cam
+        //place cam, start render
         camera.position.setZ(25);
-
-        //render
         renderer.render(scene, camera);
 
         //spwn geometry ++ material
@@ -64,13 +55,13 @@
         scene.add(pointLight, ambientLight);
 
         //spwn pointlight helper
-        // const lightHelper = new THREE.PointLightHelper(pointLight);
+        const lightHelper = new THREE.PointLightHelper(pointLight);
 
         //spwn grid helper
-        // const gridHelper = new THREE.GridHelper(200, 50);
+        const gridHelper = new THREE.GridHelper(200, 50);
 
         //add helpers to scene
-        // scene.add(lightHelper, gridHelper);
+        scene.add(lightHelper, gridHelper);
 
         //spwn camera controls
         const controls = new OrbitControls(camera, renderer.domElement);
@@ -149,7 +140,7 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            torus.rotation.x += 0.001;
+            torus.rotation.x += 0.007;
             torus.rotation.y += 0.005;
             torus.rotation.z += 0.01;
 
@@ -160,163 +151,21 @@
         //call animate func
         animate();
     </script>
-    <canvas id="bg"></canvas>
+    <canvas id="bg" class=""></canvas>
+    <!-- THREEjs end -->
+    <!-- RIOT -->
     <main>
-        <header>
-            <h1>Џ̸̬̼̲͇͆̓̊́̐͘͜Ξ̷̢͈̦̬̖͍̻̦̫͉̔̒̅̄͋̄͒̄Ж̷̥̙̘̣̙̀͒͘͜ϟ̷̛̞̜̬̥̮̩̳̻̜̯̂Ц̶̛̜̗̎́̀̈́̾̏</h1>
-            <p>🗝🔔🌞🌟👑</p>
-        </header>
-
-        <blockquote>
-            <p>
-                𝐢 𝐫 𝐛𝟎𝐠𝐢𝐞. a simple, minimalistic, and free thinker. I like making stuff &amp; eventually putting
-                it on
-                the internet. 𝐢 𝐫 𝐭𝐞𝐜𝐡𝐬𝐡𝐚𝐦𝐚𝐧 横も 。�͎̫̎�
-            </p>
-        </blockquote>
-
-        <section>
-            <h2>📜 Epiclog</h2>
-            <p>
-                I’m a creative innovator based on earth, conceptualising delightful visual experiences for mobile / web
-                that
-                inturn empower &amp; engage users.
-            </p>
-            <p>
-                Although like many, one weakness I acknowledge is not valuing myself highly and this is something I
-                routinely
-                work on improving. Regardless of weakness, some of my strengths include: Impeccable timing. Now I don't
-                mean I'm
-                super punctual, nothing like that.
-            </p>
-            <p>
-                What I mean is no matter how much effort I put in, I'm always in place need to be. I express myself
-                through
-                movement and making others laugh.
-            </p>
-        </section>
-
-        <section class="light">
-            <h2>👩🏽‍🚀 Vision</h2>
-            <p>
-                Our world is augmenting itself with new technologies.
-                We are constantly learning and evolving.
-                We are constantly evolving.
-                Mass adoption is coming.
-            </p>
-            <h2>🏆 Accomplishments</h2>
-            <ul>
-                <li>2008: Helped with Hurricane Katrina Relief via Secondary School 🏈 Team</li>
-                <li>2014: Won the IBM design in community award </li>
-                <li>Present: Finishing this page..😅</li>
-            </ul>
-        </section>
-
-        <blockquote>
-            <p>The best way out is always through <br>-Robert Frost</p>
-        </blockquote>
-
-        <section class="left">
-            <h2>🌮 EXP.</h2>
-            <h3>👨‍🎓 Scholar</h3>
-            <ul>
-                <li>Speed: 📚x3</li>
-                <li>Coordination: 📚x10</li>
-                <li>Power: 📚x8</li>
-                <li>IQ: 📚x7</li>
-                <li>Leadership: 📚x7</li>
-                <li>Luck: 📚x13</li>
-                <li>Piety: 📚x2</li>
-                <li>Lore: 📚x19</li>
-            </ul>
-            <p>
-                Domestication is the key to success in life. So I played along with the rules and made a few mistakes.
-                I'm not a perfectionist, but I'm a perfectionist.
-                So much so i've wanted this page to be a perfect it never saw the digital light of day.
-                Maybe i had to live life first before i could write this, who knows.
-                But i'm proud of what i've done &amp; where i've been.
-                Learning is life, and learning is fun.
-            </p>
-            <h3>👨‍🍳 Cook</h3>
-            <ul>
-                <li>Speed: 🍳x7</li>
-                <li>Coordination: 🍳x13</li>
-                <li>Power: 🍳x5</li>
-                <li>IQ: 🍳x9</li>
-                <li>Leadership: 🍳x9</li>
-                <li>Luck: 🍳x23</li>
-                <li>Piety: 🍳x6</li>
-                <li>Lore: 🍳x25</li>
-            </ul>
-            <p>
-                I can cook, and I love it.
-                I love it so much that I'm always trying to learn new things.
-                Although my cook style is somewhat orthodox and not very creative, I feel my fundamentals are strong.
-                Hehe I love cooking.
-            </p>
-            <h3>🤵 Barkeep </h3>
-            <ul>
-                <li>Speed: 🍹x22</li>
-                <li>Coordination: 🍹x30</li>
-                <li>Power: 🍹x10</li>
-                <li>IQ: 🍹x15</li>
-                <li>Leadership: 🍹x15</li>
-                <li>Luck: 🍹x33</li>
-                <li>Piety: 🍹x16</li>
-                <li>Lore: 🍹x40</li>
-            </ul>
-            <p>
-                I went to college with a barkeep background. I was a barkeep for a few years, but I didn't really enjoy
-                it.
-                Partly
-            </p>
-            <h3>💁 Waiter</h3>
-            <ul>
-                <li>Speed: 🥗x13</li>
-                <li>Coordination: 🥗x50</li>
-                <li>Power: 🥗x7</li>
-                <li>IQ: 🥗x10</li>
-                <li>Leadership: 🥗x9</li>
-                <li>Luck: 🥗x23</li>
-                <li>Piety: 🥗x6</li>
-                <li>Lore: 🥗x25</li>
-            </ul>
-            <p>
-                The 2 years I worked as a waiter at a local restaurant, I was able to learn a lot about the business.
-                I also learnt how to be a good person (and not a bad one).
-                i picked up a lot of skills in the process.
-                I made a lot of tips hehe.
-            </p>
-            <h3>👹 Techshaman</h3>
-            <ul>
-                <li>Speed: 📿x13</li>
-                <li>Coordination: 📿x50</li>
-                <li>Power: 📿x7</li>
-                <li>IQ: 📿x10</li>
-                <li>Leadership: 📿x9</li>
-                <li>Luck: 📿x23</li>
-                <li>Piety: 📿x6</li>
-                <li>Lore: 📿x25</li>
-            </ul>
-            <p>
-                Just before I encrouched onto lvl30, I became the Techshaman.
-                My mission is to halp. 🧞
-                ॐweareone. onethreethreeseven. morethanone.
-            </p>
-        </section>
-
-        <blockquote>
-            <p>TYSM++♥ for scrolling!</p>
-        </blockquote>
-
-        <blockquote class="left">
-            <p>
-                <a href="https://linktr.ee/jb0gie">
-                    check out ma socials, let's connect please...i'm lonely 😅
-                </a>
-            </p>
-        </blockquote>
+        <app></app>
     </main>
+    <script src="components/app.riot" type="riot"></script>
+    <script src="https://unpkg.com/riot@6/riot+compiler.min.js"></script>
+    <script type="text/javascript">
+        riot.compile()
+            .then(() => {
+                riot.mount('app')
+            })
+    </script>
+    <!-- RIOT end -->
 </body>
 
 </html>
